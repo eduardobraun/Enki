@@ -1,1 +1,0 @@
-/usr/bin/cc     CMakeFiles/joysticks.dir/joysticks.c.o  -o ../../../bin/joysticks -rdynamic ../../../lib/libglfw3.a -lGLU -lX11 -lpthread -lXrandr -lXinerama -lXi -lXxf86vm -lrt -lm -lXcursor -lGL 

@@ -1,2 +1,0 @@
-/usr/bin/ar cq ../lib/libenki.a  CMakeFiles/enki.dir/enki.cpp.o
-/usr/bin/ranlib ../lib/libenki.a

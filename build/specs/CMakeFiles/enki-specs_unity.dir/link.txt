@@ -1,1 +1,0 @@
-/usr/bin/c++    -Wfatal-errors -Wall -W -Werror -Wfloat-equal -Wundef -Wendif-labels -std=c++11   CMakeFiles/enki-specs_unity.dir/cotire/enki-specs_CXX_unity.cxx.o  -o ../bin/enki-specs -rdynamic 

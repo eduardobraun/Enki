@@ -1,1 +1,0 @@
-/usr/bin/cc     CMakeFiles/cursoranim.dir/cursoranim.c.o  -o ../../../bin/cursoranim -rdynamic ../../../lib/libglfw3.a -lGLU -lX11 -lpthread -lXrandr -lXinerama -lXi -lXxf86vm -lrt -lm -lXcursor -lGL 
