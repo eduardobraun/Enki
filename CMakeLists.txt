@@ -15,18 +15,18 @@ if (MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /MP ")
 else()
   # Assume GCC-style arguments
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wfatal-errors -Wall -W -Werror -Wfloat-equal -Wundef -Wendif-labels")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wfatal-errors -Wall -W -Werror -Wfloat-equal -Wundef -Wendif-labels -O3")
 
   if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.7")
       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
     else()
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
     endif()
   endif()
 
   if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
   endif()
 endif()
 
@@ -43,6 +43,8 @@ endif()
 #set_target_properties(enki-specs PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT "specs/specs.h")
 #set_target_properties(enki-specs PROPERTIES COTIRE_ADD_UNIT_BUILD FALSE)
 #cotire(enki-specs)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "Build the GLFW example programs")
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "Build the GLFW test programs")
 add_subdirectory(./external/glfw)
 include_directories(./external/glfw/include)
 include_directories("${GLFW_SOURCE_DIR}/include"
@@ -58,8 +60,11 @@ set(GETOPT "${GLFW_SOURCE_DIR}/deps/getopt.h"
            "${GLFW_SOURCE_DIR}/deps/getopt.c")
 set(TINYCTHREAD "${GLFW_SOURCE_DIR}/deps/tinycthread.h"
                 "${GLFW_SOURCE_DIR}/deps/tinycthread.c")
+#add_subdirectory(./external/bandit)
 
-              #add_subdirectory(./external/bandit)
+find_package( Boost REQUIRED COMPONENTS system log program_options regex )
+include_directories( ${Boost_INCLUDE_DIRS} )
+
 include_directories(./external/bandit)
 
 add_subdirectory(enki)
